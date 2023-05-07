@@ -110,14 +110,3 @@ hold.addEventListener('click', function () {
 });
 
 //resetting the game
-newGame.addEventListener('click', function () {
-  score0El.textContent = 0;
-  score1El.textContent = 0;
-  currentScore0El = 0;
-  currentScore1El = 0;
-  player0El.classList.remove(`player--winner`);
-  player1El.classList.remove(`player--winner`);
-  player0El.classList.remove(`player--active`);
-  player0El.classList.add(`player--active`);
-  player1El.classList.remove(`player--active`);
-});
