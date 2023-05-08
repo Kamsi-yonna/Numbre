@@ -9,7 +9,20 @@
   </head>
   <body>
     <main>
+      <!-- <form>
+        <label for="player1Name">Player 1 Name:</label>
+        <input type="text" id="player1Name" placeholder="Enter name" />
+
+        <label for="player2Name">Player 2 Name:</label>
+        <input type="text" id="player2Name" placeholder="Enter name" />
+
+        <button type="submit" class="btn btn--start">Start Game</button>
+      </form> -->
+
       <section class="player player--0 player--active">
+        <input type="text" id="player1Name" placeholder="Enter name" />
+        <button class="nameBtn1 btn--name">📝submit</button>
+
         <h2 class="name" id="name--0">Player 1</h2>
         <p class="score" id="score--0">43</p>
         <div class="current">
@@ -17,7 +30,11 @@
           <p class="current-score" id="current--0">0</p>
         </div>
       </section>
+
       <section class="player player--1">
+        <input type="text" id="player2Name" placeholder="Enter name" />
+        <button class="nameBtn2 btn--name">📝submit</button>
+
         <h2 class="name" id="name--1">Player 2</h2>
         <p class="score" id="score--1">24</p>
         <div class="current">
@@ -31,6 +48,7 @@
       <button class="btn btn--roll">🎲 Roll dice</button>
       <button class="btn btn--hold">📥 Hold</button>
     </main>
-    <script src="script.js"></script>
+    <!-- <script src="script.js"></script> -->
+    <script src="scripts.js"></script>
   </body>
 </html>

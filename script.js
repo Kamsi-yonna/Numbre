@@ -6,27 +6,45 @@ const player1El = document.querySelector('.player--1');
 const score0El = document.querySelector('#score--0');
 //this is another way to select IDs
 const score1El = document.getElementById('score--1');
-const currentScore0El = document.getElementById('current--1');
-const currentScore1El = document.getElementById('current--0');
+const currentScore0El = document.getElementById('current--0');
+const currentScore1El = document.getElementById('current--1');
 //FOR THE BUTTONS
 const newGame = document.querySelector('.btn--new');
 const rollDice = document.querySelector('.btn--roll');
 const hold = document.querySelector('.btn--hold');
 
-let currScore = 0;
-let currScore0 = document.getElementById('current--0');
-let currScore1 = document.getElementById('current--1');
-let scores = [0, 0]; //the final scores(total scores)
-let activePlayer = 0; //We need to know the active player
-let playing = true;
-
-//assigning values to the initial scores
-score0El.textContent = 0;
-score1El.textContent = 0;
-
+// let currScore = 0;
+// let currScore0 = document.getElementById('current--0');
+// let currScore1 = document.getElementById('current--1');
+// let scores = [0, 0]; //the final scores(total scores)
+// let activePlayer = 0; //We need to know the active player
+// let playing = true;
 //For the dice, we need to hide the dice and so for that, we would create a 'hidden' class in the css. Then add the hidden class to the dice element
 const diceImg = document.querySelector('.dice');
-diceImg.classList.add('hidden');
+
+let scores, currScore, activePlayer, playing;
+const init = function () {
+  scores = [0, 0];
+  currScore = 0;
+  activePlayer = 0;
+  playing = true;
+
+  score0El.textContent = 0;
+  score1El.textContent = 0;
+  currentScore0El.textContent = 0;
+  currentScore1El.textContent = 0;
+
+  diceImg.classList.add('hidden');
+  player0El.classList.remove('player--winner');
+  player1El.classList.remove('player--winner');
+  player0El.classList.add('player--active');
+  player1El.classList.remove('player--active');
+};
+
+init();
+// //assigning values to the initial scores
+// score0El.textContent = 0;
+// score1El.textContent = 0;
 
 const switchPlayer = function () {
   document.getElementById(`current--${activePlayer}`).textContent = 0;
@@ -37,13 +55,13 @@ const switchPlayer = function () {
   player1El.classList.toggle('player--active');
 };
 
-document.getElementById(`current--${activePlayer}`).textContent = 0;
-currScore = 0;
+// document.getElementById(`current--${activePlayer}`).textContent = 0;
+// currScore = 0;
 //Then switch to the next player
-activePlayer = activePlayer === 0 ? 1 : 0;
+// activePlayer = activePlayer === 0 ? 1 : 0;
 
-player0El.classList.toggle('player--active');
-player1El.classList.toggle('player--active');
+// player0El.classList.toggle('player--active');
+// player1El.classList.toggle('player--active');
 
 //IMPLEMENTING THE ROLL DICE FUNCTIONALITY
 rollDice.addEventListener('click', function () {
@@ -110,3 +128,6 @@ hold.addEventListener('click', function () {
 });
 
 //resetting the game
+newGame.addEventListener('click', init);
+
+//I DID NOT UNDERSTAND MOST OF THIS
