@@ -4,7 +4,6 @@ const modal = document.querySelector('.modal');
 const closeModal = document.querySelector('.close-modal');
 const overlay = document.querySelector('.overlay');
 const showModal = document.querySelectorAll('.show-modal');
-
 let modalH1 = document.querySelector('.modal h1');
 
 
@@ -14,6 +13,7 @@ let Player1 = document.getElementById('name--0');
 let Player2 = document.getElementById('name--1');
 let submit1 = document.querySelector('.nameBtn1');
 let submit2 = document.querySelector('.nameBtn2');
+let startBtn = document.querySelector('.startBtn');
 //Letting the name to be originally hidden
 Player1.classList.add('hidden');
 Player2.classList.add('hidden');
@@ -24,42 +24,68 @@ modal.classList.add('hidden');
 // submit2.classList.remove('hidden');//btns
 
 
-//CALLING A FUNCTION THAT WILL TAKE WHATEVER IS FILLED ON THE INPUT FORM AND THEN REPLACE IT WITH THE PLAYER NAME.
-
-// submit1.addEventListener('click', function () {
-//   let name1 = document.getElementById('player1Name').value;
-//   console.log(name1);
-
-//   Player1.classList.remove('hidden');
-//   player1Name.classList.add('hidden');
-//   Player1.textContent = name1;
-//   submit1.classList.add('hidden');
-// });
-
-// submit2.addEventListener('click', function () {
-//   let name2 = document.getElementById('player2Name').value;
-//   console.log(name2);
-//   Player2.classList.remove('hidden');
-//   Player2.textContent = name2;
-
-//   player2Name.classList.add('hidden');
-//   submit2.classList.add('hidden');
-// });
 
 //Dry Cleaning the code
+
+
+let numbre = document.getElementById('numbre');
+let start = document.querySelector('.btn--numbre');
+let target = document.getElementById('winner');
+
+// start.addEventListener('click', function () {
+//   let start = Number(document.getElementById('numbre').value);
+  
+//   console.log(start);
+//   if (numbre.value < 20 || numbre.value > 150) {
+//     console.log("nope");
+
+//     modalH1.textContent = 'Set a Numbre Between 20 and 150 😼'
+//     modal.classList.remove('hidden');
+//     overlay.classList.remove('hidden');
+//   }
+
+// });
+
+
+function NumberSubmit(startBtn, numbreInput, modalH1) {
+  start.addEventListener('click', function () {
+    let start = Number(numbreInput.value);
+    console.log(start);
+    if (start < 20 || start > 150) {
+      console.log("nope");
+      modalH1.textContent = 'Set a Numbre Between 20 and 150 😼'
+      modal.classList.remove('hidden');
+      overlay.classList.remove('hidden');
+    } else {
+      target.textContent = start;
+      startBtn.classList.add('hidden');
+      numbreInput.classList.add('hidden');
+
+
+      hold.classList.remove('hidden');
+      rollDice.classList.remove('hidden');
+
+    }
+  });
+}
+NumberSubmit(start, numbre, modalH1);
+
+
 function PlayerSubmit(submitBtn, playerNameInput, player) {
   submitBtn.addEventListener('click', function () {
     let playerName = playerNameInput.value;
     console.log(playerName);
-
     if (playerName) {
       player.classList.remove('hidden');
       player.textContent = playerName;
+
+      
       //hide submit btn and text field
       playerNameInput.classList.add('hidden');
       submitBtn.classList.add('hidden');
     } else {
     //   playerNameInput.value = 'kindly input a name';
+    modalH1.textContent = 'Everyone should have a name😅'
     //display the modal statement
     modal.classList.remove('hidden');
     overlay.classList.remove('hidden');
@@ -68,6 +94,13 @@ function PlayerSubmit(submitBtn, playerNameInput, player) {
 }
 PlayerSubmit(submit1, player1Name, Player1);
 PlayerSubmit(submit2, player2Name, Player2);
+
+
+
+
+
+
+
 
 //FOR CLOSING THE POPUP
 const closeModalFunc = function () {
@@ -120,7 +153,16 @@ const init = function () {
   currentScore0El.textContent = 0;
   currentScore1El.textContent = 0;
 
+
   diceImg.classList.add('hidden');
+
+  // startBtn.classList.add('hidden');
+
+  // numbreInput.classList.add('hidden');
+  // hold.classList.add('hidden');
+  // rollDice.classList.add('hidden');
+
+
   player0El.classList.remove('player--winner');
   player1El.classList.remove('player--winner');
   player0El.classList.add('player--active');
@@ -133,6 +175,14 @@ const init = function () {
   player1Name.value = '';
 player2Name.classList.remove('hidden');//inputF
 player2Name.value = '';
+
+
+rollDice.classList.add('hidden');//inputF
+hold.classList.add('hidden');//inputF
+start.classList.remove('hidden');//inputF
+numbre.classList.remove('hidden');//inputF
+numbre.value = '';
+
 submit1.classList.remove('hidden');//btns
 submit2.classList.remove('hidden');//btns
 
@@ -216,7 +266,7 @@ hold.addEventListener('click', function () {
     document.getElementById(`score--${activePlayer}`).textContent =
       scores[activePlayer];
     //Check if player's score is >=100
-    if (scores[activePlayer] >= 100) {
+    if (scores[activePlayer] >= numbre.value) {
       playing = false;
         //finish the game
         diceImg.classList.add('hidden');

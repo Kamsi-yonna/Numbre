@@ -16,7 +16,7 @@ body {
   font-weight: 400;
   height: 100vh;
   color: #333;
-  background-image: linear-gradient(to top left, #753682 0%, #a22ebf 100%);
+  background-color: #f1f1f1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,26 +30,49 @@ main {
   background-color: rgba(255, 255, 255, 0.35);
   backdrop-filter: blur(200px);
   filter: blur();
-  box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.25);
-  border-radius: 9px;
+  border: 8px #f1f1f1 solid;
+  border-style: outset;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 20px 30px,
+  rgba(0, 0, 0, 0.1) 0px 10px 10px;  
+  border-radius: 10px;
   overflow: hidden;
   display: flex;
 }
+
 
 input {
   display: block;
   width: 100%;
   box-sizing: border-box;
   font-size: 20px;
-  color: #242424;
+  color: #333;
   padding: 10px;
   border: none;
-  border-bottom: 2px solid #000000;
+  border-style: outset;
+  border-bottom: 3px solid  rgba(74, 157, 141, 0.949);
+  background-color: #fdffffe8;
   border-radius: 5px;
   margin-bottom: 10px;
   margin-top: 5px;
-  background-color: rgba(255, 255, 255, 0.35);
   outline: none;
+}
+
+input .number {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  font-size: 20px;
+  color: #333;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  margin-top: 5px;
+  outline: none;
+
+  border-style: outset;
+  border-bottom: 3px solid  rgba(74, 157, 141, 0.949);
+  background-color: #fdffffe8;
 }
 
 .player {
@@ -75,12 +98,14 @@ input {
 .score {
   font-size: 8rem;
   font-weight: 300;
-  color: #c7365f;
+  color: #333;
   margin-bottom: auto;
 }
 
 .player--active {
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: #caf3e8b3;
+  border: 5px rgba(214, 214, 214, 0.357) solid;
+  border-style: outset;
 }
 .player--active .name {
   font-weight: 700;
@@ -94,7 +119,7 @@ input {
 }
 
 .current {
-  background-color: #8636c7;
+  background-color: #079c90db;
   opacity: 0.8;
   border-radius: 9px;
   color: #fff;
@@ -129,6 +154,9 @@ input {
   cursor: pointer;
   font-weight: 400;
   transition: all 0.2s;
+  border: 1px solid black;
+  border: 1px solid rgba(79, 79, 79, 0.307);
+
 
   background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
@@ -137,6 +165,59 @@ input {
   padding: 0.7rem 2.5rem;
   border-radius: 50rem;
   box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.1);
+}
+
+#numbre {  
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20%;
+  text-align: center;
+  box-sizing: border-box;
+  font-size: 20px;
+    color: #242424;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    outline: none;
+    top: 39.3rem;
+
+
+    border-style: outset;
+    border: 1px solid #2d2d2d3d;
+    background-color: #fdffffe8;
+  }
+  
+  .btn--numbre{
+  top: 46.1rem;
+}
+
+#winner{
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #000000;
+  background: none;
+  border: none;
+  font-family: inherit;
+  font-size: 20px;
+  text-transform: uppercase;
+  /* cursor: pointer; */
+  font-weight: 400;
+  transition: all 0.2s;
+  bottom: 15px;
+
+
+/* 
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px); */
+
+  padding: 0.7rem 2.5rem;
+  border-radius: 50rem;
+  box-shadow: 0 1.75rem 3.5rem rgba(0, 0, 0, 0.212);
 }
 
 .modal {
@@ -190,6 +271,8 @@ input {
   cursor: pointer;
   font-weight: 400;
   transition: all 0.2s;
+  border: 1px solid rgba(79, 79, 79, 0.307);
+
 
   background-color: white;
   background-color: rgba(255, 255, 255, 0.6);
@@ -232,19 +315,19 @@ input {
   left: 50%;
   top: 16.5rem;
   transform: translateX(-50%);
+  border-radius: 20px;
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.2);
 }
 
 .player--winner {
-  background-color: #2f2f2f;
+  background-color: #a2f1dcb3;
 }
 
 .player--winner .name {
   font-weight: 700;
-  color: #c7365f;
+  color: #333;
 }
-
 .hidden {
   display: none;
 }
